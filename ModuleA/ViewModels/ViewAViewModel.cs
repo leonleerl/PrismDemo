@@ -11,15 +11,8 @@ namespace ModuleA.ViewModels
     {
         public ViewAViewModel()
         {
-            ClickCommand = new DelegateCommand(Click, CanClick)
+            ClickCommand = new DelegateCommand(Click)
                 .ObservesCanExecute(() => CanExecute);
-        }
-
-
-
-        private bool CanClick()
-        {
-            return CanExecute;
         }
 
         private void Click()
