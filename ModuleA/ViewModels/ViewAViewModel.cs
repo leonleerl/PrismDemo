@@ -14,9 +14,11 @@ namespace ModuleA.ViewModels
             ClickCommand = new DelegateCommand(Click, CanClick);
         }
 
+
+
         private bool CanClick()
         {
-            return true;
+            return CanExecute;
         }
 
         private void Click()
@@ -29,6 +31,16 @@ namespace ModuleA.ViewModels
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
+        }
+
+        private bool _canExecute;
+        public bool CanExecute
+        {
+            get { return _canExecute; }
+            set { 
+                SetProperty(ref _canExecute, value);
+                ClickCommand.RaiseCanExecuteChanged();
+            }
         }
 
         public DelegateCommand ClickCommand { get; private set; }
