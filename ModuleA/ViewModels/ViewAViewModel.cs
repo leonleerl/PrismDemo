@@ -11,7 +11,8 @@ namespace ModuleA.ViewModels
     {
         public ViewAViewModel()
         {
-            ClickCommand = new DelegateCommand(Click, CanClick);
+            ClickCommand = new DelegateCommand(Click, CanClick)
+                .ObservesCanExecute(() => CanExecute);
         }
 
 
@@ -37,9 +38,9 @@ namespace ModuleA.ViewModels
         public bool CanExecute
         {
             get { return _canExecute; }
-            set { 
+            set
+            {
                 SetProperty(ref _canExecute, value);
-                ClickCommand.RaiseCanExecuteChanged();
             }
         }
 
