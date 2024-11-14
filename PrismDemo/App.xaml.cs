@@ -1,4 +1,4 @@
-﻿using PrismDemo.Core.Region;
+﻿using ModuleA;
 using PrismDemo.Views;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,12 +20,18 @@ namespace PrismDemo
             
         }
 
-        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        //protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        //{
+        //    base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+        //    regionAdapterMappings.RegisterMapping(typeof(StackPanel),
+        //        Container.Resolve<StackPanelRegionAdapter>());
+        //}
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
-            regionAdapterMappings.RegisterMapping(typeof(StackPanel),
-                Container.Resolve<StackPanelRegionAdapter>());
+            moduleCatalog.AddModule<ModuleAModule>();
         }
+
     }
 
 }
